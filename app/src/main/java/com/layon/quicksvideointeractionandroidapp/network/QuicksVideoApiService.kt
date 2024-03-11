@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**
- * A public interface that exposes the [getPopularQuickVideos] method
+ * A public interface that exposes the [getSearchedQuickVideos] method
  */
 interface QuicksVideoApiService {
     /**
@@ -13,10 +13,11 @@ interface QuicksVideoApiService {
      * The @GET annotation indicates that the endpoint will be requested with the GET
      * HTTP method
      */
-    @GET("popular")
-    suspend fun getPopularQuickVideos(
+    @GET("search")
+    suspend fun getSearchedQuickVideos(
+        @Query("query") query: String = "nature",
         @Query("per_page") perPage: Int = 10,
         @Query("orientation") orientation: String = "portrait",
-        @Query("max_duration") maxDuration: Int = 3600
+        @Query("size") size: String = "medium"
     ): QuickVideosListModel
 }
