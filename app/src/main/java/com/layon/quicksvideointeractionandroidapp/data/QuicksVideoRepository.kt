@@ -7,7 +7,7 @@ import com.layon.quicksvideointeractionandroidapp.network.QuicksVideoApiService
  * Repository that fetch quick video list from pexel Api.
  */
 interface QuicksVideoRepository {
-    suspend fun getQuickVideos(): QuickVideosListModel
+    suspend fun getPopularQuickVideos(): QuickVideosListModel
 }
 
 /**
@@ -17,5 +17,5 @@ class NetworkQuicksVideoRepository(
     private val quicksVideoApiService: QuicksVideoApiService
 ) : QuicksVideoRepository {
     /** Fetches list of quick videos from pexel api*/
-    override suspend fun getQuickVideos(): QuickVideosListModel = quicksVideoApiService.getQuickVideos()
+    override suspend fun getPopularQuickVideos(): QuickVideosListModel = quicksVideoApiService.getPopularQuickVideos(perPage = 10)
 }

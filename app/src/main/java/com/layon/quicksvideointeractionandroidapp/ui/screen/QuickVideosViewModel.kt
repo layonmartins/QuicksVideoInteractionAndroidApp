@@ -43,7 +43,7 @@ class QuickVideosViewModel(private val quicksVideoRepository: QuicksVideoReposit
         viewModelScope.launch {
             quickVideoUiState = QuickVideoUiState.Loading
             quickVideoUiState = try {
-                val listResult = quicksVideoRepository.getQuickVideos().videos
+                val listResult = quicksVideoRepository.getPopularQuickVideos().videos
                 QuickVideoUiState.Success(
                     "Success: ${listResult.size} quick videos retrieved"
                 )

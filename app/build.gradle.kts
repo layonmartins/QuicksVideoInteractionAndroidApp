@@ -28,7 +28,7 @@ android {
         // set buildConfig to true
         android.buildFeatures.buildConfig = true
         debug {
-            isMinifyEnabled = true // optional, set to true
+            isMinifyEnabled = false // optional, set to true
         }
 
         release {
