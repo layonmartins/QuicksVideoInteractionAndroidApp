@@ -93,5 +93,6 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
 
-
+    implementation("androidx.media3:media3-exoplayer:1.0.0-alpha03")
+    implementation("androidx.media3:media3-ui:1.0.0-alpha03")
 }

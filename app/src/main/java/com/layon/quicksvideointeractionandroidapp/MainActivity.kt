@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import com.layon.quicksvideointeractionandroidapp.ui.QuicksVideoApp
+import com.layon.quicksvideointeractionandroidapp.ui.screen.ShowVideoPlayer
 import com.layon.quicksvideointeractionandroidapp.ui.theme.QuicksVideoInteractionAndroidAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +21,17 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    QuicksVideoApp()
+                    //TODO the video should be add in these paths by device explorer
+                    val video1 =
+                        "/data/data/com.layon.quicksvideointeractionandroidapp/files/quickvideos/video1.mp4"
+                    val video2 =
+                        "/data/data/com.layon.quicksvideointeractionandroidapp/files/quickvideos/video2.mp4"
+                    val video3 =
+                        "/data/data/com.layon.quicksvideointeractionandroidapp/files/quickvideos/video3.mp4"
+                    ShowVideoPlayer(video2) // test show a screen video
+
+                    //Make the request and show results on screenn
+                    //QuicksVideoApp()
                 }
             }
         }
