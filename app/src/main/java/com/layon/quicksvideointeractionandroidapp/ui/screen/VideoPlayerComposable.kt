@@ -101,6 +101,8 @@ fun VideoPlayer(uri: Uri) {
             exoPlayer.pause()
         }
     )
+
+    interactionsVideoLayout()
 }
 
 
@@ -129,3 +131,5 @@ fun PlayerControls(
             )
     }
 }
+
+
