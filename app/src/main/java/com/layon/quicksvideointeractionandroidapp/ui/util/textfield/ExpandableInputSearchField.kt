@@ -1,4 +1,4 @@
-package com.layon.quicksvideointeractionandroidapp.ui.screen
+package com.layon.quicksvideointeractionandroidapp.ui.util.textfield
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background

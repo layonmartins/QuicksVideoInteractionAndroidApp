@@ -1,4 +1,4 @@
-package com.layon.quicksvideointeractionandroidapp.ui.screen
+package com.layon.quicksvideointeractionandroidapp.ui.util.text
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background

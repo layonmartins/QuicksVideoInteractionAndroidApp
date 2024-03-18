@@ -1,4 +1,4 @@
-package com.layon.quicksvideointeractionandroidapp.ui.screen
+package com.layon.quicksvideointeractionandroidapp.ui.util.viewpager
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Box
@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.layon.quicksvideointeractionandroidapp.ui.util.video.ShowVideoPlayer
 
 /**
  * This composable function create an event of

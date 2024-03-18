@@ -1,4 +1,4 @@
-package com.layon.quicksvideointeractionandroidapp.ui.screen
+package com.layon.quicksvideointeractionandroidapp.ui.util.video
 
 import android.annotation.SuppressLint
 import android.net.Uri

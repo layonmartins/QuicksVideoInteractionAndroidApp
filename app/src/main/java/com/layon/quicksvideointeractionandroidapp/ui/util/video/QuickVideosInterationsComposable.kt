@@ -1,4 +1,4 @@
-package com.layon.quicksvideointeractionandroidapp.ui.screen
+package com.layon.quicksvideointeractionandroidapp.ui.util.video
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -38,6 +38,8 @@ import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.layon.quicksvideointeractionandroidapp.R
+import com.layon.quicksvideointeractionandroidapp.ui.util.textfield.ExpandableInputSearchField
+import com.layon.quicksvideointeractionandroidapp.ui.util.text.ExpandableText
 
 /**
  * Composable functions to add an Views (Text, Buttons, Imagens etc)
@@ -182,10 +184,6 @@ fun groupAudioQuickInteraction() {
 @Composable
 fun interactionsVideoLayout() {
     Box(modifier = Modifier.fillMaxSize()) {
-
-        Box(modifier = Modifier.align(Alignment.TopCenter)) {
-            ExpandableInputSearchField()
-        }
 
         Box(modifier = Modifier.align(Alignment.BottomEnd)) {
             groupButtonQuickInteraction()
