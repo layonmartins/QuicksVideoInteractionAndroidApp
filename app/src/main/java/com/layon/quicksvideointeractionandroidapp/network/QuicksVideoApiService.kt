@@ -15,8 +15,9 @@ interface QuicksVideoApiService {
      */
     @GET("search")
     suspend fun getSearchedQuickVideos(
-        @Query("query") query: String = "nature",
-        @Query("per_page") perPage: Int = 10,
+        @Query("query") query: String = "car",
+        @Query("per_page") perPage: Int = 1,
+        @Query("page") page: Int = 1,
         @Query("orientation") orientation: String = "portrait",
         @Query("size") size: String = "medium"
     ): QuickVideosListModel

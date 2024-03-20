@@ -20,13 +20,8 @@ import com.layon.quicksvideointeractionandroidapp.ui.util.video.ShowVideoPlayer
  */
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun EndlessVerticalViewPager() {
-    // Mocked videos list to test
-    var quickVideosPathList = mutableListOf(
-        "/data/data/com.layon.quicksvideointeractionandroidapp/files/quickvideos/video1.mp4",
-        "/data/data/com.layon.quicksvideointeractionandroidapp/files/quickvideos/video2.mp4",
-        "/data/data/com.layon.quicksvideointeractionandroidapp/files/quickvideos/video3.mp4"
-    )
+fun EndlessVerticalViewPager(quickVideosPathList : MutableList<String>) {
+
     val pageCount = Int.MAX_VALUE // https://stackoverflow.com/questions/75468555/how-to-create-an-endless-pager-in-jetpack-compose
     val realSize = quickVideosPathList.size
     var coveredCount by remember { mutableStateOf(0) }

@@ -28,7 +28,18 @@ data class VideoFiles(
     @SerialName(value = "width") var width: Int? = null,
     @SerialName(value = "height") var height: Int? = null,
     @SerialName(value = "link") var link: String? = null
-)
+) : Comparable<VideoFiles> {
+    override fun compareTo(other: VideoFiles): Int {
+        //TODO add comparable to with fps, width and height
+        if (this.quality == "sd" && other.quality == "hd") return -1
+        if (this.quality == "sd" && other.quality == "ud") return -1
+        if (this.quality == "hd" && other.quality == "sd") return 1
+        if (this.quality == "hd" && other.quality == "uhd") return -1
+        if (this.quality == "uhd" && other.quality == "sd") return 1
+        if (this.quality == "uhd" && other.quality == "hd") return 1
+        return 1
+    }
+}
 
 @Serializable
 data class VideoPictures(

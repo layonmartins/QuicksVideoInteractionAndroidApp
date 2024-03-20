@@ -69,8 +69,6 @@ fun VideoPlayer(uri: Uri) {
 
                 setMediaSource(source)
                 prepare()
-
-
             }
     }
 

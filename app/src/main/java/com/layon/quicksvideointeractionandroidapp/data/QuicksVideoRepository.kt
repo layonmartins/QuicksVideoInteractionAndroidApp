@@ -17,5 +17,5 @@ class NetworkQuicksVideoRepository(
     private val quicksVideoApiService: QuicksVideoApiService
 ) : QuicksVideoRepository {
     /** Fetches list of quick videos from pexel api*/
-    override suspend fun getSearchedQuickVideos(): QuickVideosListModel = quicksVideoApiService.getSearchedQuickVideos(perPage = 10)
+    override suspend fun getSearchedQuickVideos(): QuickVideosListModel = quicksVideoApiService.getSearchedQuickVideos()
 }
