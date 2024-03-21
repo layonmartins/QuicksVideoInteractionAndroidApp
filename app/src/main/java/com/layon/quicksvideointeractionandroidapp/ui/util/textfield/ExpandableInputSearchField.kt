@@ -1,5 +1,6 @@
 package com.layon.quicksvideointeractionandroidapp.ui.util.textfield
 
+import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -34,13 +36,20 @@ import androidx.compose.ui.unit.dp
  * to show and hide the TextField visibility
  */
 @Composable
-fun ExpandableInputSearchField() {
+fun ExpandableInputSearchField(
+    onDoneSearchTextField: ( String ) -> Unit
+) {
     var showTextField by remember { mutableStateOf(false)}
     Row(
         modifier = Modifier.fillMaxWidth().padding(10.dp),
         horizontalArrangement = Arrangement.End
     ) {
-        OutLineTextFieldSample(showTextField)
+        OutLineTextFieldSample(
+            isVisible = showTextField,
+            onDoneSearchTextField = {
+                showTextField = false
+                onDoneSearchTextField(it)
+            })
         SmallFloatingActionButton(
             modifier = Modifier.align(Alignment.CenterVertically),
             onClick = {
@@ -54,7 +63,10 @@ fun ExpandableInputSearchField() {
 }
 
 @Composable
-fun OutLineTextFieldSample(isVisible: Boolean) {
+fun OutLineTextFieldSample(
+    isVisible: Boolean,
+    onDoneSearchTextField: ( String ) -> Unit,
+    ) {
     var text by remember { mutableStateOf(TextFieldValue("")) }
     val focusRequester = remember { FocusRequester() }
 
@@ -63,7 +75,7 @@ fun OutLineTextFieldSample(isVisible: Boolean) {
             modifier = Modifier
                 .padding(end = 10.dp)
                 .fillMaxWidth(0.85F)
-                .background(Color.Black.copy(alpha = 0.4f))
+                .background(Color.Black.copy(alpha = 0.2f))
                 .focusRequester(focusRequester),
             value = text,
             label = { Text(text = "Search Quicks") },
@@ -71,6 +83,11 @@ fun OutLineTextFieldSample(isVisible: Boolean) {
             onValueChange = {
                 text = it
             },
+           keyboardActions = KeyboardActions(
+                onDone = {
+                    onDoneSearchTextField(text.toString())
+                }
+            ),
             singleLine = true
         )
         LaunchedEffect(Unit) {
@@ -82,5 +99,7 @@ fun OutLineTextFieldSample(isVisible: Boolean) {
 @Preview
 @Composable
 fun seachInputFieldPreview() {
-    ExpandableInputSearchField()
+    ExpandableInputSearchField() {
+        "Enter your search here"
+    }
 }

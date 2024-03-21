@@ -39,12 +39,10 @@ import java.io.File
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ShowVideoPlayer(videoPath: String) {
+fun ShowVideoPlayer(videoUri: Uri) {
     Scaffold(
         content = {
-            VideoPlayer(
-                Uri.fromFile(File(videoPath))
-            )
+            VideoPlayer(videoUri)
         }
     )
 }

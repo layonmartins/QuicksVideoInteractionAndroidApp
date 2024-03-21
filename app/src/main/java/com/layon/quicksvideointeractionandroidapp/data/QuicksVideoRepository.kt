@@ -7,7 +7,10 @@ import com.layon.quicksvideointeractionandroidapp.network.QuicksVideoApiService
  * Repository that fetch quick video list from pexel Api.
  */
 interface QuicksVideoRepository {
-    suspend fun getSearchedQuickVideos(): QuickVideosListModel
+    suspend fun getSearchedQuickVideos(
+        query: String,
+        page: Int
+    ): QuickVideosListModel
 }
 
 /**
@@ -17,5 +20,9 @@ class NetworkQuicksVideoRepository(
     private val quicksVideoApiService: QuicksVideoApiService
 ) : QuicksVideoRepository {
     /** Fetches list of quick videos from pexel api*/
-    override suspend fun getSearchedQuickVideos(): QuickVideosListModel = quicksVideoApiService.getSearchedQuickVideos()
+    override suspend fun getSearchedQuickVideos(
+        query: String,
+        page: Int,
+    ): QuickVideosListModel =
+        quicksVideoApiService.getSearchedQuickVideos(query = query, page = page)
 }

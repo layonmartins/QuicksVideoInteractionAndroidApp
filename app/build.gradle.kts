@@ -95,4 +95,7 @@ dependencies {
     implementation("androidx.compose.material:material:1.5.4")
     implementation("androidx.navigation:navigation-compose:2.7.3")
     implementation("androidx.compose.material:material-icons-extended:1.6.3")
+
+    // Work Manager - Kotlin + coroutines
+    implementation("androidx.work:work-runtime-ktx:2.8.1")
 }
