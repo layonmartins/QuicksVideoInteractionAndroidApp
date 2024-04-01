@@ -17,7 +17,6 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.layon.quicksvideointeractionandroidapp.QuicksVideoInteractionAndroidApp
 import com.layon.quicksvideointeractionandroidapp.data.QuicksVideoRepository
-import com.layon.quicksvideointeractionandroidapp.model.VideoFiles
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -69,16 +68,16 @@ class HomeScreenViewModel(
         query: String,
         page: Int) {
         viewModelScope.launch {
-            Log.d("layonf", "getNewQuickVideoFromApi query: $query, page: $page")
             quickVideosUiStateList.add(
                 try {
-                    val videos = quicksVideoRepository.getSearchedQuickVideos(query, page).videos.first()
-                    val videoName = videos.url ?: videos.id.toString()
-                    val videoUrl = getBestVideoFileQualityLink(videos.videoFiles)
-                    val videoUri = saveVideoInInternalStorage(videoName, videoUrl)
-                    Log.d("layonf", "getNewQuickVideoFromApi QuickVideoUiState.Success: $videoUri")
+                    Log.d("layonf", "HomeScreenViewModel try getNewQuickVideoFromApi query: $query, page: $page")
+                    quicksVideoRepository.getNewQuickVideosFromApiAndSaveDataBase(query, page)
+                    //val videoName = videos.url ?: videos.id.toString()
+                    //val videoUrl = getBestVideoFileQualityLink(videos.videoFiles)
+                    //val videoUri = saveVideoInInternalStorage(videoName, videoUrl)
+                    //Log.d("layonf", "getNewQuickVideoFromApi QuickVideoUiState.Success: $videoUri")
                     QuickVideoUiState.Success(
-                        quickVideoUri = videoUri,
+                        quickVideoUri = null,
                         likes = 1000,
                         comments = listOf(
                             LoremIpsum().values.first().take(10),
@@ -147,21 +146,12 @@ class HomeScreenViewModel(
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as QuicksVideoInteractionAndroidApp)
-                val quicksVideoRepository = application.container.quicksVideoRepository
+                val quicksVideoRepository = application.container.quickVideosWorkManagerRepository
                 HomeScreenViewModel(context = application, quicksVideoRepository = quicksVideoRepository)
             }
         }
 
-        //TODO add unit test
-        fun getBestVideoFileQualityLink(videoFiles: ArrayList<VideoFiles>) : String {
-            var video : VideoFiles ? = videoFiles.first()
-            videoFiles.forEach { next ->
-                if (video?.compareTo(next) == -1 && video?.link != null) {
-                    video = next
-                }
-            }
-            return video?.link!!
-        }
+
     }
 }
 

@@ -1,6 +1,7 @@
 package com.layon.quicksvideointeractionandroidapp.network
 
 import com.layon.quicksvideointeractionandroidapp.model.QuickVideosListModel
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -15,10 +16,10 @@ interface QuicksVideoApiService {
      */
     @GET("search")
     suspend fun getSearchedQuickVideos(
-        @Query("query") query: String = "",
+        @Query("query") query: String = "car",
         @Query("per_page") perPage: Int = 1,
         @Query("page") page: Int = 1,
         @Query("orientation") orientation: String = "portrait",
         @Query("size") size: String = "medium"
-    ): QuickVideosListModel
+    ): Response<QuickVideosListModel>
 }
